@@ -15,25 +15,22 @@ public class OfferSeeder {
 
         List<Offer> offerList = new ArrayList<>();
 
-        Offer appleOffer = new Offer();
-        appleOffer.setId(1L);
-        appleOffer.setName("appleOffer");
-        appleOffer.setDescription("Apples 10% off: ");
-        appleOffer.setOfferFunction("function appleOffer(x) { return  x.applesCount * ((x.applesPrice * 10)/100);}");
-        appleOffer.setProductType(ProductType.APPLES);
-        appleOffer.setValidStartDate(DateUtils.daysAfter(3));
-        appleOffer.setValidEndDate(DateUtils.getEndOfMonth());
+        Offer appleOffer = Offer.builder()
+                .name("appleOffer")
+                .description("Apples 10% off: ")
+                .offerFunction("function appleOffer(x) { return  x.applesCount * ((x.applesPrice * 10)/100);}")
+                .productType(ProductType.APPLES)
+                .validStartDate((DateUtils.daysAfter(3)))
+                .validEndDate(DateUtils.getEndOfMonth()).build();
 
         offerList.add(appleOffer);
 
-        Offer breadOffer = new Offer();
-        breadOffer.setId(2L);
-        breadOffer.setName("breadOffer");
-        breadOffer.setDescription("Bread half price: ");
-        breadOffer.setOfferFunction("function breadOffer(x) {if (x.soupCount >= 2){ return  Math.floor(x.soupCount / 2 ) * (x.breadPrice / 2);} return 0;}");
-        breadOffer.setProductType(ProductType.BREAD);
-        breadOffer.setValidStartDate(DateUtils.daysAfter(-1));
-        breadOffer.setValidEndDate(DateUtils.daysAfter(-1 + 7));
+        Offer breadOffer = Offer.builder()
+                .name("breadOffer")
+                .description("Bread half price: ")
+                .offerFunction("function breadOffer(x) {if (x.soupCount >= 2){ return  Math.floor(x.soupCount / 2 ) * (x.breadPrice / 2);} return 0;}")
+                .productType(ProductType.BREAD).validStartDate(DateUtils.daysAfter(-1))
+                .validEndDate(DateUtils.daysAfter(-1 + 7)).build();
         offerList.add(breadOffer);
 
         return offerList;

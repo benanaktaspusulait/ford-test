@@ -14,6 +14,8 @@ import javax.script.ScriptEngineManager;
 import javax.script.ScriptException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -49,5 +51,16 @@ public class CalculateService {
         return totalText.toString();
     }
 
+    public static String calculate(String offerLine) throws ScriptException, NoSuchMethodException {
+        String[] productArray = offerLine.split(" ");
 
+        List<BaseProduct> productList = new ArrayList<>();
+        List<String> productListText = Arrays.asList(productArray);
+
+        int day = Integer.parseInt(productListText.get(productListText.size() - 1));
+
+        productListText.subList(0, productListText.size() - 1).forEach(g -> productList.add(CalculateDTO.convertStringToProduct(g)));
+
+        return CalculateService.calculate(CalculateDTO.generateDTO(productList), productList, day);
+    }
 }
