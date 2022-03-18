@@ -9,8 +9,7 @@ import java.util.function.Predicate;
 public class OfferPredicate {
 
     public static Predicate<Offer> filterByDate(Date date) {
-        return pr -> (pr.getValidStartDate().before(date) &&
-                pr.getValidEndDate().after(date));
+        return pr -> (pr.getValidStartDate().before(date) && pr.getValidEndDate().after(date));
     }
 
     public static Predicate<Offer> filterByProductType(ProductType productType) {

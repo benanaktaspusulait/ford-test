@@ -18,13 +18,13 @@ public class GroceryApplication {
     public static void main(String[] args) throws ScriptException, NoSuchMethodException {
 
         Scanner scanner = new Scanner(System.in);
-        String line = scanner.nextLine();
+        String offerLine = scanner.nextLine();
 
-        calculate(line);
+        calculate(offerLine);
     }
 
-    public static void calculate(String productText) throws ScriptException, NoSuchMethodException {
-        String[] productArray = productText.split(" ");
+    public static void calculate(String offerLine) throws ScriptException, NoSuchMethodException {
+        String[] productArray = offerLine.split(" ");
 
         List<BaseProduct> productList = new ArrayList<>();
         List<String> productListText = Arrays.asList(productArray);
